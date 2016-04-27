@@ -5,6 +5,10 @@ import javax.swing.JEditorPane;
 import java.net.URL;
 import java.io.*;
 
+/**
+ * Dieses Programm ist ein Texteditor zum Öffnen, Bearbeiten und Speichern von
+ * Text- sowie Html-Dateien Dies ist die Hauptklasse des Programms
+ */
 public class SwingFrame extends JFrame implements ActionListener {
 
 	private JTextField jtfStatus;
@@ -57,6 +61,9 @@ public class SwingFrame extends JFrame implements ActionListener {
 		fileBrowser = new FileBrowser(jtfStatus);
 	}
 
+	/**
+	 * Diese Methode initialisert die GUI
+	 */
 	private void createMenu() {
 
 		// MenuBar
@@ -209,6 +216,11 @@ public class SwingFrame extends JFrame implements ActionListener {
 		}
 	}
 
+	/**
+	 * Zusammenführung der einzelnen Toolbar-Elemente
+	 * 
+	 * @return Die fertige Toolbar
+	 */
 	private JToolBar getToolBar() {
 		JToolBar toolBar = new JToolBar();
 		toolBar.add(actNewFile);
@@ -227,11 +239,17 @@ public class SwingFrame extends JFrame implements ActionListener {
 
 	}
 
+	/**
+	 * Speichern der Datei ohne Abfrage-Dialog zum Speicher-Pfad
+	 */
 	private void save() {
 		fileBrowser.saveFile(file, editorPane.getText());
 		jtfStatus.setText("Datei \"" + file.getAbsolutePath() + "\" gespeichert");
 	}
 
+	/**
+	 * Öffnet einen Speicher-Dialog welcher die Wahl des Speicher-Pfades erlaubt
+	 */
 	private void saveAs() {
 		file = fileBrowser.saveFileAs(editorPane.getText(), "Speichern", ".");
 		if (file != null) {

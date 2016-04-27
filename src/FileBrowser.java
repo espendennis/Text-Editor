@@ -3,6 +3,10 @@ import java.net.URL;
 import javax.swing.JFileChooser;
 import javax.swing.JTextField;
 
+/**
+ * Hilfsklasse zum Speichern und Laden von Dateien
+ *
+ */
 public class FileBrowser {
 
 	private JTextField jtfStatus;
@@ -13,10 +17,26 @@ public class FileBrowser {
 		return file;
 	};
 
+	/**
+	 * Konstruktor
+	 * 
+	 * @param jtfStatus
+	 *            Textfield in das diese Klasse Statusmeldungen schreibt
+	 */
+
 	public FileBrowser(JTextField jtfStatus) {
 		this.jtfStatus = jtfStatus;
 	}
 
+	/**
+	 * Auswahl einer URL zum Öffnen einer Html-Seite
+	 * 
+	 * @param title
+	 *            Titel des Fensters
+	 * @param startDir
+	 *            Pfad der beim Öffnen dieses Dialoges angezeigt werden soll
+	 * @return ein URL-Objekt mit dem gewählten URL
+	 */
 	public URL chooseURL(String title, String startDir) {
 
 		URL url = null;
@@ -35,6 +55,15 @@ public class FileBrowser {
 		return url;
 	}
 
+	/**
+	 * Auswahl einer Textdatei
+	 * 
+	 * @param title
+	 *            Titel des Fensters
+	 * @param startDir
+	 *            Pfad der beim Öffnen dieses Dialoges angezeigt werden soll
+	 * @return ein file-Objekt mit Referenz zur ausgewählten Datei
+	 */
 	public String chooseText(String title, String startDir) {
 		file = null;
 		fileChooser = new JFileChooser(new File(startDir));
@@ -65,6 +94,15 @@ public class FileBrowser {
 		return sb.toString();
 	}
 
+	/**
+	 * Speichern eines Textes in eine Datei
+	 * 
+	 * @param file
+	 *            Referenz auf die Datei in welche geschrieben werden soll
+	 * @param text
+	 *            Der Text der in die Datei geschrieben werden soll
+	 */
+
 	public void saveFile(File file, String text) {
 		try {
 			BufferedWriter bufWriter = new BufferedWriter(new FileWriter(file));
@@ -76,6 +114,19 @@ public class FileBrowser {
 		}
 	}
 
+	/**
+	 * Dialog zum Speichern des Textes in eine Datei
+	 * 
+	 * @param text
+	 *            Der Text der gespeichert werden soll
+	 * @param title
+	 *            Der Titel den das Fenster haben soll
+	 * @param startDir
+	 *            Pfad der beim Öffnen dieses Dialoges angezeigt werden soll
+	 * @return nach erfolgreichem Speichern wird ein file-Objekt mit Referenz
+	 *         zur gespeicherten Datei zurückgegeben. Bei Fehlschlag wird null
+	 *         zurückgegeben.
+	 */
 	public File saveFileAs(String text, String title, String startDir) {
 		File file;
 		fileChooser = new JFileChooser(new File(startDir));
